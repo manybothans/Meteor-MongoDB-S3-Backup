@@ -21,41 +21,28 @@ Add your MongoDB and Amazon credentials to the package. Do this in server-only c
 ``` javascript
 Meteor.startup(function() {
 	MongoBackup.config({
-		// mongodb data is optional; if not provided,
-		// information from process.env.MONGO_URL is used
-		mongodb: {
-			host: "localhost",
-			port: 3001,
-			username: false,
-			password: false,
-			db: "meteor"
-		},
-		s3: {
-			key: "your_s3_key",
-			secret: "your_s3_secret",
-			bucket: "s3_bucket_to_upload_to",
-			destination: "/upload-directory" // optional; defaults to "/"
-		},
-		cron: {
-			time: "11:59",
-			timezone: "America/Vancouver" // optional; defaults to "America/Vancouver"
+			"aws": {
+		  		"region": "<your-s3-region>",
+		        "bucket": "<your-bucket>",
+		        "ACL": "public-read",
+		        "MaxTries": 2,
+		        "accessKeyId": "<your-access-key>",
+		        "secretAccessKey": "<your-secret-key>"
+			},
+			// mongodb data is optional; if not provided,
+			// information from process.env.MONGO_URL is used
+			"mongodb": "mongodb://<username>:<password>@<host>:<port>/<db-name>",
+			// default
+			"basename": "mongodump",
+			//default
+			"cron": {
+				"crontab": "0 0 1 * * *",
+				"timezone": "America/Vancouver"
+			}
 		}
 	});
 });
 ```
-
-#### Crontabs
-
-You may optionally substitute the cron "time" field with an explicit "crontab" of the standard format `0 0 * * *`.
-
-``` javascript
-cron: {
-	crontab: "0 0 * * *"
-}
-```
-
-*Note*: The version of cron that we run supports a sixth digit (which is in seconds) if
-you need it.
 
 ## Running
 
@@ -77,6 +64,6 @@ I made this package for my own purposes and decided to share it. It is provided 
 
 ## Credits
 
-This package uses the awesome node-mongodb-s3-backup NodeJS module created by @theycallmeswift, available here:
+This package uses the awesome mongodump-s3 NodeJS module created by @SamDuvall, available here:
 
-https://github.com/theycallmeswift/node-mongodb-s3-backup
+https://github.com/SamDuvall/mongodump-s3
