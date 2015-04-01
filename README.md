@@ -4,7 +4,7 @@ Easily backup your MongoDB database to Amazon AWS S3. Run scheduled backups with
 
 ## NOTE
 
-This package does NOT currently work on deployments to *.meteor.com becuase it uses NPM modules that contain binary files. I am working on a solution.
+This package does NOT work on deployments to *.meteor.com.
 
 ## Installation
 
@@ -17,8 +17,6 @@ meteor add jplatimer:mongo-backup
 ###On The Server
 
 Add your MongoDB and Amazon credentials to the package. Do this in server-only code (not just an 'isServer' block) to keep your key secret. If you do not provide MongoDB information, the package will use information from the `MONGO_URL` environment variable.
-
-*Note*: This package will likely not work with mongo data from apps hosted on meteor.com.
 
 ``` javascript
 Meteor.startup(function() {
