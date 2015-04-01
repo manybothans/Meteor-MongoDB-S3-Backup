@@ -18,14 +18,14 @@ meteor add jplatimer:mongo-backup
 
 Add your MongoDB and Amazon credentials to the package. Do this in server-only code (not just an 'isServer' block) to keep your key secret. If you do not provide MongoDB information, the package will use information from the `MONGO_URL` environment variable.
 
+*Note*: This package will likely not work with mongo data from apps hosted on meteor.com.
+
 ``` javascript
 Meteor.startup(function() {
 	MongoBackup.config({
 			"aws": {
 		  		"region": "<your-s3-region>",
 		        "bucket": "<your-bucket>",
-		        "ACL": "public-read",
-		        "MaxTries": 2,
 		        "accessKeyId": "<your-access-key>",
 		        "secretAccessKey": "<your-secret-key>"
 			},
