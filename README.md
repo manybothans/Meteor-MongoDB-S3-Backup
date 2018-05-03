@@ -58,7 +58,7 @@ MongoBackup.backupNow();
 
 ## Disclaimer
 
-I made this package for my own purposes and decided to share it. It is provided "AS IS." I take no resposibility for any lost data or other problems resulting from using this package. It's your resonsibility to make sure it's working on your deployment!!
+I made this package for my own purposes and decided to share it. It is provided "AS IS." I take no responsibility for any lost data or other problems resulting from using this package. It's your responsibility to make sure it's working on your deployment!!
 
 ## Credits
 
